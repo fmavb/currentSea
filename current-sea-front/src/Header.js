@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import './Header.css';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import $ from 'jquery';
 
 export class Header extends Component {
     constructor() {
         super();
         this.state = {
-            loggedIn: true // set to true by default for testing purposes
+            loggedIn: true, // set to true by default for testing purposes
+            redirectHome: false
         };
 
         this.componentDidMount = this.componentDidMount.bind(this);
@@ -47,14 +48,27 @@ export class Header extends Component {
         });
     }
 
+    redirectHome = () => {
+
+        if (this.state.redirectHome == true) {
+            this.setState({redirectHome: false})
+            return <Redirect to = "/Transactions"/>
+        }
+
+    }
+
+    handleTap = () => {
+        this.setState({redirectHome: true})
+    }
+
     render() {
         return (
 
             <nav className="headerRoot">
-
+                {this.redirectHome()}
                 <div className="linkContainer">
 
-                    <img className="logo" src={require('./Assets/CSLogo.png')}></img>
+                    <img onClick={this.handleTap} className="logo" src={require('./Assets/CSLogo.png')} border="0"></img>
 
                     <Link to="/">
                         <button onClick={this.logout} class="logoutHeader"><img src={require('./Assets/lockwhite.png')}
@@ -63,7 +77,6 @@ export class Header extends Component {
                         </button>
                     </Link>
 
-                    <Link to="/Help">?</Link>
                     <Link to="/Currencies/Currencies">My Currencies</Link>
                     <Link to="/Reports/Report"> View Reports</Link>
                     <Link to="/Transactions">My Transactions</Link>

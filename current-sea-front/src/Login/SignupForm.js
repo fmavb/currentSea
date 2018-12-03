@@ -167,7 +167,7 @@ export default class SignupForm extends Component {
                                 <div className="loginFieldGap"></div>
 
                                 <div className="supConfirmPasswordDiv">
-                                    <input name="confirmPassword" className="supFormField"
+                                    <input type ="password" name="confirmPassword" className="supFormField"
                                            placeholder="Confirm Password" onChange={this.handleChange}/>
                                 </div>
 

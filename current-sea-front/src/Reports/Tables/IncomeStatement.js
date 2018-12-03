@@ -117,14 +117,15 @@ export default class IncomeStatement extends Component {
     render() {
 
 
+
         var data = [{
-            number: '1000', account: 'Profit/ Loss from Previous Year', change: 55.63 * this.state.demoExchangeRate
+            number: '1000', account: 'Profit/ Loss from Previous Year', change: Number((55.63 * this.state.demoExchangeRate).toFixed(2))
         }, {
-            number: '1900', account: 'Union Bank of Switzerland', change: 55.63 * this.state.demoExchangeRate
+            number: '1900', account: 'Union Bank of Switzerland', change: Number((55.63 * this.state.demoExchangeRate).toFixed(2))
         }, {
-            number: '1950', account: 'Bank of Finland', change: 0 * this.state.demoExchangeRate
+            number: '1950', account: 'Bank of Finland', change: Number((0 * this.state.demoExchangeRate).toFixed(2))
         },{
-            number: '6000', account: 'Food', change: 10.50 * this.state.demoExchangeRate
+            number: '6000', account: 'Food', change: Number((10.50 * this.state.demoExchangeRate).toFixed(2))
         }];
         var columns = [
             {
